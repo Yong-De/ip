@@ -16,7 +16,7 @@ public class Doug {
         printLine();
         System.out.println(banner);
         System.out.println(String.format(
-                "Hello, this is %s%s Where we solve problems no one has.", name, name));
+                "Hey, this is %s%s Where we solve problems no one has.", name, name));
         System.out.println("What can I do for you?");
         printLine();
     }
