@@ -18,4 +18,9 @@ public class Task {
     public void setDone(boolean input) {
         isDone = input;
     }
+
+    @Override
+    public String toString() {
+        return String.format("[%c] %s", (isDone) ? 'X' : ' ', getName());
+    }
 }
