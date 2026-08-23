@@ -1,32 +1,37 @@
+import java.util.Scanner;
+
 public class Doug {
-    private static String banner = " ____\n"
-            + "|  _ \\  ___  _   _  __ _\n"
-            + "| | | |/ _ \\| | | |/ _` |\n"
-            + "| |_| | (_) | |_| | (_| |\n"
-            + "|____/ \\___/ \\__,_|\\__, |\n"
-            + "                   |___/\n";
-    private static String name = "Doug";
+    private static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
         initialization();
+        while (chatting())
+            ;
         termination();
     }
 
     private static void initialization() {
-        printLine();
-        System.out.println(banner);
-        System.out.println(String.format(
-                "Hey, this is %s%s Where we solve problems no one has.", name, name));
-        System.out.println("What can I do for you?");
-        printLine();
+        DougLines.printLine();
+        DougLines.printBanner();
+        DougLines.printIntro();
+        DougLines.printLine();
+    }
+
+    private static boolean chatting() {
+        System.out.println();
+        String line;
+        line = in.nextLine();
+        DougLines.printLine();
+        if (line.equalsIgnoreCase("bye")) {
+            return false;
+        }
+        DougMethods.reply(line);
+        return true;
     }
 
     private static void termination() {
-        System.out.println("Peace.");
-        printLine();
+        DougLines.printOutro();
+        DougLines.printLine();
     }
 
-    private static void printLine() {
-        System.out.println("____________________________________________________________");
-    }
 }
