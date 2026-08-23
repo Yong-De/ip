@@ -11,27 +11,27 @@ public class Doug {
     }
 
     private static void initialization() {
-        DougLines.printLine();
-        DougLines.printBanner();
-        DougLines.printIntro();
-        DougLines.printLine();
+        Line.printLine();
+        Line.printBanner();
+        Line.printIntro();
+        Line.printLine();
     }
 
     private static boolean chatting() {
         System.out.println();
         String line;
         line = in.nextLine();
-        DougLines.printLine();
+        Line.printLine();
         if (line.equalsIgnoreCase("bye")) {
             return false;
         }
-        DougMethods.reply(line);
+        Method.reply(line);
         return true;
     }
 
     private static void termination() {
-        DougLines.printOutro();
-        DougLines.printLine();
+        Line.printOutro();
+        Line.printLine();
     }
 
 }

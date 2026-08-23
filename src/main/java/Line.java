@@ -1,4 +1,4 @@
-public class DougLines {
+public class Line {
     // Lines
     private static String name = "Doug";
 
