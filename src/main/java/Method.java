@@ -15,8 +15,8 @@ public class Method {
         Line.printLine();
     }
 
-    private static void addToList(String input) {
-        list[listSize++] = new Task(input);
+    private static void addToList(String input, Task.Type taskType) {
+        list[listSize++] = new Task(input, taskType);
         System.out.printf("\tadded: %s\n", input);
         Line.printLine();
     }
@@ -36,13 +36,16 @@ public class Method {
     }
 
     public static void reply(String input) {
-        String[] words = input.split(" ");
+        String[] words = input.split(" ", 2);
         try {
             switch (words[0].toLowerCase()) {
                 case "list" -> getList();
                 case "mark" -> markDone(Integer.parseInt(words[1]));
                 case "unmark" -> markUndone(Integer.parseInt(words[1]));
-                default -> addToList(input);
+                case "todo" -> addToList(words[1], Task.Type.TODO);
+                case "deadline" -> addToList(words[1], Task.Type.DEADLINE);
+                case "event" -> addToList(words[1], Task.Type.EVENT);
+                default -> System.out.println("\tThis is not a valid input!");
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("\tYou need to provide a task number!");
