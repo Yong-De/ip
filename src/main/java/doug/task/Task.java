@@ -1,3 +1,5 @@
+package doug.task;
+
 public class Task {
     public enum Type {
         TODO, DEADLINE, EVENT

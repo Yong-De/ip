@@ -1,3 +1,5 @@
+package doug.ui;
+
 public class Line {
     // Lines
     private static String name = "Doug";

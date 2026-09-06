@@ -1,3 +1,7 @@
+package doug.ui;
+
+import doug.errors.DougException;
+import doug.task.TaskManager;
 import java.util.Scanner;
 
 public class Doug {
@@ -25,7 +29,13 @@ public class Doug {
         if (line.equalsIgnoreCase("bye")) {
             return false;
         }
-        Method.reply(line);
+
+        try {
+            TaskManager.reply(line);
+        } catch (DougException e) {
+            System.out.println("\tHey don't try to be funny!");
+            Line.printLine();
+        }
         return true;
     }
 

@@ -1,3 +1,3 @@
 #!/bin/bash
-javac Doug.java
-java Doug
+javac doug/ui/Doug.java
+java doug.ui.Doug
