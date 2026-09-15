@@ -12,7 +12,8 @@ public class Line {
             + "\t                   |___/\n";
 
     private static String intro = String.format(
-            "\tHey, this is %s%s Where we solve problems no one has.\n\n\tWhat can I do for you?", name, name);
+            "\tHey, this is %s%s Where we solve problems no one has.\n\n\tWhat can I do for you? The 'help' keyword might be useful here!",
+            name, name);
 
     private static String outro = "\tPeace.";
 
