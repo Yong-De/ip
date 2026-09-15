@@ -33,7 +33,7 @@ public class Doug {
         try {
             TaskManager.reply(line);
         } catch (DougException e) {
-            System.out.println("\tHey don't try to be funny!");
+            System.out.println("\tHey don't try to be funny! Get some help with 'help'!");
             Line.printLine();
         }
         return true;
