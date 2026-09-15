@@ -54,6 +54,10 @@ public class TaskManager {
         Line.printLine();
     }
 
+    private static void saveList() {
+        TaskSaver.createSaveFile(taskList);
+    }
+
     public static void reply(String input) {
         String[] words = input.split(" ", 2);
         switch (words[0].toLowerCase()) {
@@ -63,6 +67,7 @@ public class TaskManager {
             case "todo" -> addToList(input, Task.Type.TODO);
             case "deadline" -> addToList(input, Task.Type.DEADLINE);
             case "event" -> addToList(input, Task.Type.EVENT);
+            case "save" -> saveList();
             default -> throw new DougException();
         }
     }
