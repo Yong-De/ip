@@ -17,7 +17,7 @@ public class Line {
 
     private static String outro = "\tPeace.";
 
-    private static String line = "\t____________________________________________________________";
+    private static String line = "\t_______________________________________________________________________________________";
 
     // Printers
     public static void printName() {

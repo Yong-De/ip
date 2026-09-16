@@ -1,3 +1,2 @@
 #!/bin/bash
-javac doug/ui/Doug.java
-java doug.ui.Doug
+javac $(find doug -name "*.java") && java doug.ui.Doug

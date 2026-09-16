@@ -5,18 +5,24 @@ public class Task {
         TODO, DEADLINE, EVENT
     };
 
-    private String name;
+    private String description;
     private Type taskType;
     private boolean isDone;
 
-    public Task(String name, Type taskType) {
-        this.name = name;
+    public Task(String description, Type taskType) {
+        this.description = description;
         this.taskType = taskType;
         this.isDone = false;
     }
 
-    public String getName() {
-        return name;
+    public Task(String description, Type taskType, boolean isDone) {
+        this.description = description;
+        this.taskType = taskType;
+        this.isDone = isDone;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public Type getTaskType() {
@@ -35,6 +41,6 @@ public class Task {
     public String toString() {
         char taskTypeChar = taskType.toString().charAt(0);
         char isDoneChar = (isDone) ? 'X' : ' ';
-        return String.format("[%c][%c] %s", taskTypeChar, isDoneChar, getName());
+        return String.format("[%c][%c] %s", taskTypeChar, isDoneChar, getDescription());
     }
 }
