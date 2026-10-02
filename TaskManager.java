@@ -7,17 +7,13 @@ import doug.errors.DougException;
 import doug.ui.Line;
 
 public class TaskManager {
-    private static ArrayList<Task> taskList = new ArrayList<>();
+    private ArrayList<Task> taskList = new ArrayList<>();
 
-    private static void echo(String input) {
-        System.out.printf("\t %s\n", input);
-    }
-
-    private static void printTaskSyntax(Task.Type taskType) {
+    private void printTaskSyntax(Task.Type taskType) {
         System.out.printf("\t%s <description>\n", taskType.toString().toLowerCase());
     }
 
-    private static void printHelp() {
+    private void printHelp() {
         System.out.println("\tHere are the list of commands");
 
         System.out.println("\n\t---- List Tasks ----");
@@ -38,13 +34,13 @@ public class TaskManager {
 
     }
 
-    private static void printList() {
+    private void printList() {
         for (int i = 0; i < taskList.size(); ++i) {
             System.out.printf("\t%d.%s\n", i + 1, taskList.get(i));
         }
     }
 
-    private static void getList() {
+    private void getList() {
         if (taskList.size() <= 0)
             System.out.println("\tYou haven't added anything yet. Start adding.");
         else {
@@ -53,7 +49,7 @@ public class TaskManager {
         }
     }
 
-    private static void addToList(String input, Task.Type taskType) {
+    private void addToList(String input, Task.Type taskType) {
         String[] words = input.split(" ", 2);
         try {
             String description = words[1];
@@ -69,7 +65,7 @@ public class TaskManager {
         }
     }
 
-    private static void markDone(boolean isDone, String input) {
+    private void markDone(boolean isDone, String input) {
         String[] words = input.split(" ", 2);
         try {
             int index = Integer.parseInt(words[1]) - 1;
@@ -88,7 +84,7 @@ public class TaskManager {
         }
     }
 
-    private static void deleteFromList(String input) {
+    private void deleteFromList(String input) {
         String[] words = input.split(" ", 2);
         try {
             int index = Integer.parseInt(words[1]) - 1;
@@ -109,15 +105,15 @@ public class TaskManager {
         }
     }
 
-    private static void saveList() {
+    private void saveList() {
         TaskSaver.createSaveFile(taskList);
     }
 
-    public static void initTaskList(ArrayList<Task> savedTaskList) {
+    public void initTaskList(ArrayList<Task> savedTaskList) {
         taskList = savedTaskList;
     }
 
-    public static void reply(String input) {
+    public void reply(String input) {
         String[] words = input.split(" ", 2);
         switch (words[0].toLowerCase()) {
             case "help" -> printHelp();

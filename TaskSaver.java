@@ -51,7 +51,7 @@ public class TaskSaver {
     }
 
     private static boolean resolveIsDone(String isDoneChar) {
-        return (isDoneChar.equals("1")) ? true : false;
+        return (isDoneChar.equals("1"));
     }
 
     public static void loadSaveFile() {
