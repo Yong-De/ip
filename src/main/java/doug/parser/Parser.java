@@ -14,7 +14,17 @@ import doug.task.Event;
 import doug.task.Task;
 import doug.task.Todo;
 
+/**
+ * Converts raw user input into tasks and executable commands.
+ */
 public class Parser {
+    /**
+     * Parses a todo command into a todo task.
+     *
+     * @param input complete user input beginning with the todo command word
+     * @return todo task containing the supplied description
+     * @throws DougException if no task description is supplied
+     */
     public static Task parseTodo(String input) throws DougException {
         String[] words = input.split(" ", 2);
 
@@ -25,6 +35,13 @@ public class Parser {
         return new Todo(description);
     }
 
+    /**
+     * Parses a deadline command into a deadline task.
+     *
+     * @param input complete user input containing a description and {@code /by} date
+     * @return deadline task containing the parsed description and date
+     * @throws DougException if the description or {@code /by} date is missing
+     */
     public static Task parseDeadline(String input) throws DougException {
         String[] words = input.split(" ", 2);
 
@@ -43,6 +60,14 @@ public class Parser {
         return new Deadline(description, byDateString);
     }
 
+    /**
+     * Parses an event command into an event task.
+     *
+     * @param input complete user input containing a description, {@code /from} date,
+     *              and {@code /to} date
+     * @return event task containing the parsed description and date range
+     * @throws DougException if the description or either required date is missing
+     */
     public static Task parseEvent(String input) throws DougException {
         String[] words = input.split(" ", 2);
 
@@ -68,6 +93,14 @@ public class Parser {
         return new Event(description, fromDateString, toDateString);
     }
 
+    /**
+     * Parses user input and creates the command represented by its first word.
+     * User-facing task numbers are converted to zero-based indexes for the command classes.
+     *
+     * @param input complete command entered by the user
+     * @return command corresponding to the supplied input
+     * @throws DougException if the command is unknown or its required arguments are invalid
+     */
     public static Command parseCommand(String input) throws DougException {
         String[] words = input.split(" ", 2);
         String commandWord = words[0].toLowerCase();
