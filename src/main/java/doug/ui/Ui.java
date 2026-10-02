@@ -57,8 +57,9 @@ public class Ui {
         print("list");
 
         print("\n===== Adding Tasks =====");
-        java.util.EnumSet.allOf(Task.Type.class)
-                .forEach(type -> print(String.format("%-10s <description>", type.toString().toLowerCase())));
+        print(String.format("%-10s <description>", "todo"));
+        print(String.format("%-10s <description> /by <date>", "deadline"));
+        print(String.format("%-10s <description> /from <date> /to <date>", "event"));
 
         print("\n===== Marking Tasks =====");
         print(String.format("%-10s <index>", "mark"));
@@ -66,6 +67,9 @@ public class Ui {
 
         print("\n===== Deleting Tasks =====");
         print(String.format("%-10s <index>", "delete"));
+
+        print("\n===== Finding Tasks =====");
+        print(String.format("%-10s <keyword>", "find"));
 
         print("\n===== Termination =====");
         print("bye");
@@ -100,6 +104,18 @@ public class Ui {
         else
             print("Oh wait I guess this isn't done yet.");
         print(String.format("%d.%s", index, task));
+    }
+
+    public void printFoundTasks(ArrayList<Task> foundTasks) {
+        if (foundTasks.isEmpty()) {
+            print("No tasks match that keyword.");
+        } else {
+            print("Here are the matching tasks in your list:");
+            for (int i = 0; i < foundTasks.size(); ++i) {
+                // Notice there is no \n here, respecting your previous bug fix!
+                print(String.format("%d.%s", i + 1, foundTasks.get(i)));
+            }
+        }
     }
 
     public void printError(String errorMessage) {

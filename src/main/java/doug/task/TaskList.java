@@ -31,6 +31,18 @@ public class TaskList {
         return toDelete;
     }
 
+    public ArrayList<Task> findTasks(String keyword) {
+        ArrayList<Task> matchedTasks = new ArrayList<>();
+        String lowerCaseKeyword = keyword.toLowerCase();
+
+        for (Task task : taskList) {
+            if (task.getDescription().toLowerCase().contains(lowerCaseKeyword)) {
+                matchedTasks.add(task);
+            }
+        }
+        return matchedTasks;
+    }
+
     public Task getTask(int index) {
         if (index < 0 || index >= taskList.size())
             throw new DougException("Can't get that. Not a thing.");

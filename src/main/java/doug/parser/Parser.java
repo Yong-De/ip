@@ -4,6 +4,7 @@ import doug.command.AddCommand;
 import doug.command.Command;
 import doug.command.DeleteCommand;
 import doug.command.ExitCommand;
+import doug.command.FindCommand;
 import doug.command.HelpCommand;
 import doug.command.ListCommand;
 import doug.command.MarkCommand;
@@ -105,6 +106,11 @@ public class Parser {
                 } catch (NumberFormatException e) {
                     throw new DougException(String.format("%s is not a number. Put a number please.", words[1]));
                 }
+            case "find":
+                if (words.length < 2 || words[1].trim().isEmpty()) {
+                    throw new DougException("What are you trying to find? Give me a keyword.");
+                }
+                return new FindCommand(words[1].trim());
             case "delete":
                 try {
                     int indexToDelete = Integer.parseInt(words[1]) - 1;
